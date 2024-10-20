@@ -44,13 +44,26 @@ if (isset($_SESSION['user_id'])) {
                 Interface
             </div>';
 
-            echo ' <li class="nav-item">
-                <a class="nav-link collapsed" href="thesis">
-                    <span>Thesis</span>
-                </a>
+            echo '
 
-            </li>
-
+            <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#strand"
+        aria-expanded="true" aria-controls="strand">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Strand</span>
+    </a>
+    <div id="strand" class="collapse" aria-labelledby="headingTwo" data-parent="#strand">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Document Component:</h6>
+            <a class="collapse-item" href="stem">STEM</a>
+            <a class="collapse-item" href="abm">ABM</a>
+            <a class="collapse-item" href="ict">ICT</a>
+            <a class="collapse-item" href="humss">HUMSS</a>
+            <a class="collapse-item" href="gas">GAS</a>
+            <a class="collapse-item" href="automotive">AUTOMOTIVE</a>
+        </div>
+    </div>
+</li>  
             <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
         aria-expanded="true" aria-controls="collapseTwo">
@@ -60,8 +73,8 @@ if (isset($_SESSION['user_id'])) {
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Document Component:</h6>
-            <a class="collapse-item" href="#">User</a>
-            <a class="collapse-item" href="#">Strand</a>
+            <a class="collapse-item" href="user">User</a>
+            <a class="collapse-item" href="strand">Strand</a>
         </div>
     </div>
 </li>  
