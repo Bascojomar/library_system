@@ -22,6 +22,7 @@ include '../backend/database.php';
                 <input type="text" class="form-control my-2" name="category" placeholder="Category">
                 <select name="strand" class="form-control my-2">
 
+                <option hidden>Strand</option>
                 <option value="1">STEM</option>
                 <option value="2">ABM</option>
                 <option value="5">ICT</option>

@@ -411,7 +411,8 @@ while ($row = $result->fetch_assoc()) {
                                         <div class="date-range-container mr-auto"></div>
                                     </div>';
 
-                                    echo'<button class="btn btn-primary float-right" data-toggle="modal" data-target="#book"></button>
+                                    echo'<div class="d-flex justify-content-end" style="margin-top:10px; margin-right: 15px;">
+                                    <button class="btn btn-primary float-end" data-toggle="modal" data-target="#book">Add Books</button></div>
                 
                                     <!-- Card Body -->
                                     <div class="card-body" style="height:660px;">

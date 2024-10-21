@@ -3,7 +3,7 @@
 $role = $_SESSION['role'];
 
 
-if ($position == 'admin' ){
+if ($role == 'admin' ){
   header('location: ../admin/dashboard');
 }
 ?>
