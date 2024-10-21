@@ -167,7 +167,7 @@ while ($row = $result->fetch_assoc()) {
                 <!-- Begin Page Content -->
                 <div class="container-fluid" id="maincontent">
                     <!-- Page Heading -->
-                    <label class="">MOTORCYCLE PARTS</label>
+                    <label class="">DASHBOARD</label>
                     <?php
                     if (isset($_SESSION['user_id'])) {
                         // Retrieve user data from the database
@@ -194,9 +194,7 @@ while ($row = $result->fetch_assoc()) {
                                                 STEM</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">';
 
-                                $queryload = "SELECT COUNT(*) as count FROM tbl_books b
-                                JOIN tbl_users bs ON b.book_id = bs.user_id
-                                WHERE bs.strand = 'STEM'";
+                                $queryload = "SELECT COUNT(*) as count FROM tbl_books where strand_id = 1";
                                 //  WHERE officeCreated =  $getOfficess
                                 $result = mysqli_query($conn, $queryload);
 
@@ -226,7 +224,7 @@ while ($row = $result->fetch_assoc()) {
                                                 ABM</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">';
 
-                                $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand ='ABM'";
+                                $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 2";
                                 //  WHERE officeCreated =  $getOfficess
                                 $result = mysqli_query($conn, $queryload);
 
@@ -256,7 +254,7 @@ while ($row = $result->fetch_assoc()) {
                                                 GAS</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">';
 
-                                $queryload = "SELECT COUNT(*) as count2 FROM tbl_books where strand = 'GAS'";
+                                $queryload = "SELECT COUNT(*) as count2 FROM tbl_books where strand_id = 8";
                                 //  WHERE officeCreated =  $getOfficess
                                 $result = mysqli_query($conn, $queryload);
 
@@ -286,7 +284,7 @@ while ($row = $result->fetch_assoc()) {
                                                 HUMSS</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">';
 
-                                $queryload = "SELECT COUNT(*) as count2 FROM tbl_books where strand = 'HUMSS'";
+                                $queryload = "SELECT COUNT(*) as count2 FROM tbl_books where strand_id = 9";
                                 //  WHERE officeCreated =  $getOfficess
                                 $result = mysqli_query($conn, $queryload);
 
@@ -316,7 +314,7 @@ while ($row = $result->fetch_assoc()) {
                                                 ICT</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">';
 
-                                $queryload = "SELECT COUNT(*) as count2 FROM tbl_books where strand = 'ICT'";
+                                $queryload = "SELECT COUNT(*) as count2 FROM tbl_books where strand_id = 5";
                                 //  WHERE officeCreated =  $getOfficess
                                 $result = mysqli_query($conn, $queryload);
 
@@ -346,7 +344,7 @@ while ($row = $result->fetch_assoc()) {
                                                 AUTOMOTIVE</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">';
 
-                                $queryload = "SELECT COUNT(*) as count2 FROM tbl_books where strand = 'AUTOMOTIVE'";
+                                $queryload = "SELECT COUNT(*) as count2 FROM tbl_books where strand_id = 7";
                                 //  WHERE officeCreated =  $getOfficess
                                 $result = mysqli_query($conn, $queryload);
 

@@ -171,7 +171,7 @@ while ($row = $result->fetch_assoc()) {
                     <!-- Page Heading -->
                      <label class="">Thesis </label>
     <?php
-$query = "SELECT * FROM tbl_books where strand = 'ABM'";
+$query = "SELECT * FROM tbl_books where strand_id = 2";
 $result = $conn->query($query);
 echo '<div class="d-flex flex-wrap">';
 

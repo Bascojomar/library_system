@@ -1,5 +1,6 @@
 <?php
 include "../backend/database.php";
+include "../backend/function.php";
 include "../session.php";
 include "log.php";
 
@@ -11,8 +12,8 @@ $sql = "SELECT * FROM tbl_users WHERE role = '$role'";
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
-  $role = $row['role'];
-  $id = $row['user_id'];
+    $role = $row['role'];
+    $id = $row['user_id'];
 }
 ?>
 
@@ -21,8 +22,8 @@ while ($row = $result->fetch_assoc()) {
 
 <head>
 
-   
-<meta charset="utf-8">
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -30,7 +31,10 @@ while ($row = $result->fetch_assoc()) {
 
     <title>Admin - Dashboard</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -44,21 +48,19 @@ while ($row = $result->fetch_assoc()) {
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     <script>
-    function ajax_function(php_file, container) {
-        $.ajax({
-            url: php_file,
-            type: 'GET',
-            success: function(response) {
-                $(container).html(response);
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX request failed:', status, error);
-                $(container).html('<p>Error loading content. Please try again later.</p>');
-            }
-        });
-    }
-
-    
+        function ajax_function(php_file, container) {
+            $.ajax({
+                url: php_file,
+                type: 'GET',
+                success: function(response) {
+                    $(container).html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX request failed:', status, error);
+                    $(container).html('<p>Error loading content. Please try again later.</p>');
+                }
+            });
+        }
     </script>
 
 </head>
@@ -71,7 +73,7 @@ while ($row = $result->fetch_assoc()) {
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-<?php include "../nav.php"; ?>
+            <?php include "../nav.php"; ?>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -139,9 +141,9 @@ while ($row = $result->fetch_assoc()) {
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <?php
-                            echo'<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            echo '<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">'.$user.'</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">' . $user . '</span>
                                 <!-- <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg"> -->
                             </a>';
@@ -169,84 +171,93 @@ while ($row = $result->fetch_assoc()) {
                 <!-- Begin Page Content -->
                 <div class="container-fluid" id="maincontent">
                     <!-- Page Heading -->
-                     <label class="">Thesis </label>
-    <?php
-$query = "SELECT * FROM tbl_books where strand_id = 7";
-$result = $conn->query($query);
-echo '<div class="d-flex flex-wrap">';
+                    <label class="">Strand Data</label>
 
-while ($row = $result->fetch_assoc()) {
-    $title = $row['title'];
-    $id = $row['book_id'];
-    $author = $row['author'];
-    $publisher = $row['publisher'];
-    $category = $row['category'];
-  echo'
-    <div class="col-xl-4 col-md-6 mb-4">
-    <div class="card border-left-info shadow h-100 py-2">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-1">';
+                    <div class="container-fluid mt-4">
 
-            
-                echo'<button class="btn btn-primary float-right" data-toggle="automotive" data-target="#modal' . $id . '">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                    <path d="M13.473 0.849c-0.195-0.195-0.512-0.195-0.707 0l-2.291 2.291-8.16 8.16c-0.419 0.419-0.586 1.049-0.462 1.628l1.393-1.393 8.16-8.16 2.291-2.291c0.195-0.195 0.195-0.512 0-0.707zM11.68 2.643l1.439-1.439c0.293-0.293 0.77-0.293 1.063 0l0.955 0.954c0.293 0.293 0.293 0.77 0 1.063l-1.439 1.439-1.064-1.063zM2.803 12.52l-0.954-0.954L11.68 2.643l0.954 0.954L2.803 12.52z"></path>
-                    <path fill-rule="evenodd" d="M14.854 3.646l-2.5-2.5a1 1 0 0 0-1.415 0l-9.586 9.586a1 1 0 0 0-0.271 0.464l-0.669 2.676a1 1 0 0 0 1.282 1.283l2.676-0.669a1 1 0 0 0 0.464-0.271l9.586-9.586a1 1 0 0 0 0-1.415zM3.207 14.207l0.665-2.658 1.993 1.993-2.658 0.665zm9.586-9.586l-0.665 2.658-1.993-1.993 2.658-0.665z"></path>
-                </svg>
-            </button>
+                        <div class="d-flex justify-content-end mb-3" style="margin-top:-60px;">
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                data-target="#addstrand">
 
+                                <i class="fas fa-user-plus"></i> Add Strand
+                            </button>
 
-                      <div class="text-l text-center font-weight-bold text-info text-uppercase mb-1">
-                        '.$title.'
-                        </div><br>
-                    <div class="row no-gutters align-items-center">
+                            <?php
+                            include "../modal/adduser.php";
+                            ?> 
+                        </div>
 
-                            <div class="col-4 text-center">
-                                Author<br> '.$author.'
-                            </div>
+                        <table id="userTable" class="table table-bordered">
+                            <thead class="table">
+                                <tr>
+                                    <th>Strand</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
 
-                        <div class="col-4 text-center">
-                                Publisher<br> '.$publisher.'
-                            </div>
+                                // Query to select users
+                                $sql = "SELECT * FROM tbl_strand";
+                                $result = mysqli_query($conn, $sql);
 
-                        <div class="col-4 text-center">
-                                Category<br> '.$category.'
-                            </div>
+                                // Check if the query returned any rows
+                                if (mysqli_num_rows($result) > 0) {
+                                    // Fetch each row and display it
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        echo '<tr>';
+                                        echo '<td>' . htmlspecialchars(strandName($row['strand_id'])) . '</td>';
+                                        echo '</tr>';
+                                    }
+                                } else {
+                                    // If no users are found
+                                    echo '<tr><td colspan="2" class="text-center">No users found</td></tr>';
+                                }
 
+                                // Free the result and close the connection
+                                mysqli_free_result($result);
+                                mysqli_close($conn);
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                <div class="col-auto">
-                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-';
-include '../modal/modal.php';
-}
 
-?>
 
-                        <!-- Content Column -->
+                    <!-- Content Column -->
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                    <!-- Bootstrap core JavaScript-->
+                    <script src="vendor/jquery/jquery.min.js"></script>
+                    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+                    <!-- Core plugin JavaScript-->
+                    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+                    <!-- Custom scripts for all pages-->
+                    <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+                    <!-- Page level plugins -->
+                    <script src="vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+                    <!-- Page level custom scripts -->
+                    <script src="js/demo/chart-area-demo.js"></script>
+                    <script src="js/demo/chart-pie-demo.js"></script>
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <!-- Bootstrap JS -->
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+                    <!-- DataTables JS -->
+                    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+                    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+                    <script>
+                        $(document).ready(function() {
+                            // Initialize DataTables on your table
+                            $('#userTable').DataTable({
+                                "paging": true, // Enable pagination
+                                "searching": true, // Enable search bar
+                                "ordering": true // Enable sorting
+                            });
+                        });
+                    </script>
+
 
 </body>
 

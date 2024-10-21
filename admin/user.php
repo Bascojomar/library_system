@@ -1,5 +1,6 @@
 <?php
 include "../backend/database.php";
+include "../backend/function.php";
 include "../session.php";
 include "log.php";
 
@@ -172,7 +173,7 @@ while ($row = $result->fetch_assoc()) {
                     <!-- Page Heading -->
                     <label class="">User Data</label>
 
-                    <div class="container mt-4">
+                    <div class="container-fluid mt-4">
 
                         <div class="d-flex justify-content-end mb-3" style="margin-top:-60px;">
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
@@ -186,8 +187,8 @@ while ($row = $result->fetch_assoc()) {
                             ?> 
                         </div>
 
-                        <table id="userTable" class="table table-striped table-bordered">
-                            <thead class="table-dark">
+                        <table id="userTable" class="table table-bordered">
+                            <thead class="table">
                                 <tr>
                                     <th>Username</th>
                                     <th>Name</th>
@@ -212,7 +213,7 @@ while ($row = $result->fetch_assoc()) {
                                         echo '<td>' . htmlspecialchars($row['name']) . '</td>';
                                         echo '<td>' . htmlspecialchars($row['email']) . '</td>';
                                         echo '<td>' . htmlspecialchars($row['role']) . '</td>';
-                                        echo '<td>' . htmlspecialchars($row['strand']) . '</td>';
+                                        echo '<td>' . htmlspecialchars(strandName($row['strand_id'])) . '</td>';
                                         echo '</tr>';
                                     }
                                 } else {

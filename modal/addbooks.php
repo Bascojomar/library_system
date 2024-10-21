@@ -20,7 +20,16 @@ include '../backend/database.php';
                 <input type="text" class="form-control my-2" name="author" placeholder="Author">
                 <input type="text" class="form-control my-2" name="publisher" placeholder="Publisher">
                 <input type="text" class="form-control my-2" name="category" placeholder="Category">
-                <input type="text" class="form-control my-2" name="strand" placeholder="Strand">
+                <select name="strand" class="form-control my-2">
+
+                <option value="1">STEM</option>
+                <option value="2">ABM</option>
+                <option value="5">ICT</option>
+                <option value="7">AUTOMOTIVE</option>
+                <option value="8">GAS</option>
+                <option value="9">HUMSS</option>
+
+                </select>
                 <input type="submit" class="btn btn-primary form-control my-2" name="save">
 
             </form></div>

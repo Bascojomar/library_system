@@ -9,7 +9,7 @@ if(isset($_POST['save'])){
     $category = $_POST['category'];
     $strand = $_POST['strand'];
 
-    $sql = "INSERT INTO tbl_books SET title ='$title', author = '$author', publisher = '$publisher', category = '$category', strand='$strand'";
+    $sql = "INSERT INTO tbl_books SET title ='$title', author = '$author', publisher = '$publisher', category = '$category', strand_id ='$strand'";
     $result = mysqli_query($conn, $sql);
 
     if($result){
