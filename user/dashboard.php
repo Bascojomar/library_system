@@ -225,7 +225,7 @@ while ($row = $result->fetch_assoc()) {
                                                 Available Books</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">';
 
-                                $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where status = 'Available'";
+                                $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 1 and  status = 'Available'";
                                 //  WHERE officeCreated =  $getOfficess
                                 $result = mysqli_query($conn, $queryload);
 
@@ -255,7 +255,7 @@ while ($row = $result->fetch_assoc()) {
                                                 Borrowed Books</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">';
 
-                                $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where status = 'Borrowed'";
+                                $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 2 and status = 'Borrowed'";
                                 //  WHERE officeCreated =  $getOfficess
                                 $result = mysqli_query($conn, $queryload);
 
@@ -328,277 +328,729 @@ while ($row = $result->fetch_assoc()) {
                                 }
 
                             } elseif ($role == 'abm') {
+                                echo '<div class="row">
 
-                                echo '
-                        <div class="row">
-                            <!-- Area Chart -->
-                            <div class="col-xl col-lg-7">
-                                <div class="card shadow mb-4">
-                                    <!-- Card Header - Dropdown -->
-                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary mr-5">RECENT BOOKS</h6>
-                                        <div class="date-range-container mr-auto"></div>
-                                    </div>';
-
-                                echo '
-                
-                                    <!-- Card Body -->
-                                    <div class="card-body" style="height:660px;">
-                                        <table id="booksTable" class="table table-striped" style="width:100%;">
-                                            <thead>
-                                                <tr>
-                                                    <th>Title</th>
-                                                    <th>Author Type</th>
-                                                    <th>Publisher</th>
-                                                    <th>ISBN</th>
-                                                    <th>Category</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>';
-
-
-                                $query = "SELECT * FROM tbl_users WHERE strand_id = $strand_id";
-                                $result = $conn->query($query);
-
-                                if ($result->num_rows == 1) {
-                                    // Fetch user data if available
-                                    $user_data = $result->fetch_assoc();
-
-                                    // Fetch book data
-                                    $sql = "SELECT * FROM tbl_books where strand_id = $strand_id";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    if (mysqli_num_rows($result) > 0) {
-                                        // Loop through each row and display data
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            echo "<tr>";
-                                            echo "<td>" . $row['title'] . "</td>";
-                                            echo "<td>" . $row['author'] . "</td>";
-                                            echo "<td>" . $row['publisher'] . "</td>";
-                                            echo "<td>" . $row['isbn'] . "</td>";
-                                            echo "<td>" . $row['category'] . "</td>";
-                                            echo "</tr>";
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Total of Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count FROM tbl_books where strand_id = 2 and  status = 'Available'";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count'];
                                         }
-                                    } else {
-                                        echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
-                                    }
-                                }
-
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Available Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 2 and  status = 'Available'";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count1'];
+                                        }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fa fa-cogs fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Borrowed Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 2 and status = 'Borrowed'";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count1'];
+                                        }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fa fa-cogs fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                ';
+                                        echo '
+                                            <!-- Area Chart -->
+                                            <div class="col-xl col-lg-7">
+                                                <div class="card shadow mb-4">
+                                                    <!-- Card Header - Dropdown -->
+                                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                        <h6 class="m-0 font-weight-bold text-primary mr-5">RECENT BOOKS</h6>
+                                                        <div class="date-range-container mr-auto"></div>
+                                                    </div>';
+        
+                                        echo '
+                                                        <div class="card-body" style="height:660px;">
+                                                        <table id="booksTable" class="table table-striped" style="width:100%;">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Title</th>
+                                                                    <th>Author Type</th>
+                                                                    <th>Publisher</th>
+                                                                    <th>ISBN</th>
+                                                                    <th>Category</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>';
+                                        $query = "SELECT * FROM tbl_users WHERE strand_id = $strand_id";
+                                        $result = $conn->query($query);
+        
+                                        if ($result->num_rows == 1) {
+                                            // Fetch user data if available
+                                            $user_data = $result->fetch_assoc();
+        
+                                            // Fetch book data
+                                            $sql = "SELECT * FROM tbl_books WHERE strand_id = $strand_id";
+                                            $result = mysqli_query($conn, $sql);
+        
+                                            if (mysqli_num_rows($result) > 0) {
+                                                // Loop through each row and display data
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    echo "<tr>";
+                                                    echo "<td>" . htmlspecialchars($row['title']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['author']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['publisher']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['isbn']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['category']) . "</td>";
+                                                    echo "</tr>";
+                                                }
+                                            } else {
+                                                echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
+                                            }
+                                        }
                             } elseif ($role == 'gas') {
-                                echo '
-                    <div class="row">
-                        <!-- Area Chart -->
-                        <div class="col-xl col-lg-7">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary mr-5">RECENT BOOKS</h6>
-                                    <div class="date-range-container mr-auto"></div>
-                                </div>';
+                                echo '<div class="row">
 
-                                echo '
-                                <!-- Card Body -->
-                                <div class="card-body" style="height:660px;">
-                                    <table id="booksTable" class="table table-striped" style="width:100%;">
-                                        <thead>
-                                            <tr>
-                                                <th>Title</th>
-                                                <th>Author Type</th>
-                                                <th>Publisher</th>
-                                                <th>ISBN</th>
-                                                <th>Category</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>';
-
-                                $query = "SELECT * FROM tbl_users WHERE strand_id = $strand_id";
-                                $result = $conn->query($query);
-
-                                if ($result->num_rows == 1) {
-                                    // Fetch user data if available
-                                    $user_data = $result->fetch_assoc();
-
-                                    // Fetch book data
-                                    $sql = "SELECT * FROM tbl_books where strand_id = $strand_id";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    if (mysqli_num_rows($result) > 0) {
-                                        // Loop through each row and display data
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            echo "<tr>";
-                                            echo "<td>" . $row['title'] . "</td>";
-                                            echo "<td>" . $row['author'] . "</td>";
-                                            echo "<td>" . $row['publisher'] . "</td>";
-                                            echo "<td>" . $row['isbn'] . "</td>";
-                                            echo "<td>" . $row['category'] . "</td>";
-                                            echo "</tr>";
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Total of Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count FROM tbl_books where strand_id = 8";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count'];
                                         }
-                                    } else {
-                                        echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
-                                    }
-                                }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Available Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 8 and  status = 'Available'";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count1'];
+                                        }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fa fa-cogs fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Borrowed Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 8 and status = 'Borrowed'";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count1'];
+                                        }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fa fa-cogs fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                ';
+                                        echo '
+                                            <!-- Area Chart -->
+                                            <div class="col-xl col-lg-7">
+                                                <div class="card shadow mb-4">
+                                                    <!-- Card Header - Dropdown -->
+                                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                        <h6 class="m-0 font-weight-bold text-primary mr-5">RECENT BOOKS</h6>
+                                                        <div class="date-range-container mr-auto"></div>
+                                                    </div>';
+        
+                                        echo '
+                                                        <div class="card-body" style="height:660px;">
+                                                        <table id="booksTable" class="table table-striped" style="width:100%;">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Title</th>
+                                                                    <th>Author Type</th>
+                                                                    <th>Publisher</th>
+                                                                    <th>ISBN</th>
+                                                                    <th>Category</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>';
+                                        $query = "SELECT * FROM tbl_users WHERE strand_id = $strand_id";
+                                        $result = $conn->query($query);
+        
+                                        if ($result->num_rows == 1) {
+                                            // Fetch user data if available
+                                            $user_data = $result->fetch_assoc();
+        
+                                            // Fetch book data
+                                            $sql = "SELECT * FROM tbl_books WHERE strand_id = $strand_id";
+                                            $result = mysqli_query($conn, $sql);
+        
+                                            if (mysqli_num_rows($result) > 0) {
+                                                // Loop through each row and display data
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    echo "<tr>";
+                                                    echo "<td>" . htmlspecialchars($row['title']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['author']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['publisher']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['isbn']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['category']) . "</td>";
+                                                    echo "</tr>";
+                                                }
+                                            } else {
+                                                echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
+                                            }
+                                        }
 
                             } elseif ($role == 'ict') {
-                                echo '
-                <div class="row">
-                    <!-- Area Chart -->
-                    <div class="col-xl col-lg-7">
-                        <div class="card shadow mb-4">
-                            <!-- Card Header - Dropdown -->
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary mr-5">RECENT BOOKS</h6>
-                                <div class="date-range-container mr-auto"></div>
-                            </div>';
+                                echo '<div class="row">
 
-                                echo '
-                            <div class="card-body" style="height:660px;">
-                                <table id="booksTable" class="table table-striped" style="width:100%;">
-                                    <thead>
-                                        <tr>
-                                            <th>Title</th>
-                                            <th>Author Type</th>
-                                            <th>Publisher</th>
-                                            <th>ISBN</th>
-                                            <th>Category</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>';
-
-                                $query = "SELECT * FROM tbl_users WHERE strand_id = $strand_id";
-                                $result = $conn->query($query);
-
-                                if ($result->num_rows == 1) {
-                                    // Fetch user data if available
-                                    $user_data = $result->fetch_assoc();
-
-                                    // Fetch book data
-                                    $sql = "SELECT * FROM tbl_books where strand_id = $strand_id";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    if (mysqli_num_rows($result) > 0) {
-                                        // Loop through each row and display data
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            echo "<tr>";
-                                            echo "<td>" . $row['title'] . "</td>";
-                                            echo "<td>" . $row['author'] . "</td>";
-                                            echo "<td>" . $row['publisher'] . "</td>";
-                                            echo "<td>" . $row['isbn'] . "</td>";
-                                            echo "<td>" . $row['category'] . "</td>";
-                                            echo "</tr>";
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Total of Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count FROM tbl_books where strand_id = 5";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count'];
                                         }
-                                    } else {
-                                        echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
-                                    }
-                                }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Available Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 5 and  status = 'Available'";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count1'];
+                                        }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fa fa-cogs fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Borrowed Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 5 and status = 'Borrowed'";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count1'];
+                                        }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fa fa-cogs fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                ';
+                                        echo '
+                                            <!-- Area Chart -->
+                                            <div class="col-xl col-lg-7">
+                                                <div class="card shadow mb-4">
+                                                    <!-- Card Header - Dropdown -->
+                                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                        <h6 class="m-0 font-weight-bold text-primary mr-5">RECENT BOOKS</h6>
+                                                        <div class="date-range-container mr-auto"></div>
+                                                    </div>';
+        
+                                        echo '
+                                                        <div class="card-body" style="height:660px;">
+                                                        <table id="booksTable" class="table table-striped" style="width:100%;">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Title</th>
+                                                                    <th>Author Type</th>
+                                                                    <th>Publisher</th>
+                                                                    <th>ISBN</th>
+                                                                    <th>Category</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>';
+                                        $query = "SELECT * FROM tbl_users WHERE strand_id = $strand_id";
+                                        $result = $conn->query($query);
+        
+                                        if ($result->num_rows == 1) {
+                                            // Fetch user data if available
+                                            $user_data = $result->fetch_assoc();
+        
+                                            // Fetch book data
+                                            $sql = "SELECT * FROM tbl_books WHERE strand_id = $strand_id";
+                                            $result = mysqli_query($conn, $sql);
+        
+                                            if (mysqli_num_rows($result) > 0) {
+                                                // Loop through each row and display data
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    echo "<tr>";
+                                                    echo "<td>" . htmlspecialchars($row['title']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['author']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['publisher']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['isbn']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['category']) . "</td>";
+                                                    echo "</tr>";
+                                                }
+                                            } else {
+                                                echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
+                                            }
+                                        }
 
                             } elseif ($role == 'humss') {
-                                echo '
-            <div class="row">
-                <!-- Area Chart -->
-                <div class="col-xl col-lg-7">
-                    <div class="card shadow mb-4">
-                        <!-- Card Header - Dropdown -->
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary mr-5">RECENT BOOKS</h6>
-                            <div class="date-range-container mr-auto"></div>
-                        </div>';
+                                echo '<div class="row">
 
-                                echo '
-                        <div class="card-body" style="height:660px;">
-                            <table id="booksTable" class="table table-striped" style="width:100%;">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Author Type</th>
-                                        <th>Publisher</th>
-                                        <th>ISBN</th>
-                                        <th>Category</th>
-                                    </tr>
-                                </thead>
-                                <tbody>';
-
-                                $query = "SELECT * FROM tbl_users WHERE strand_id = $strand_id";
-                                $result = $conn->query($query);
-
-                                if ($result->num_rows == 1) {
-                                    // Fetch user data if available
-                                    $user_data = $result->fetch_assoc();
-
-                                    // Fetch book data
-                                    $sql = "SELECT * FROM tbl_books where strand_id = $strand_id";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    if (mysqli_num_rows($result) > 0) {
-                                        // Loop through each row and display data
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            echo "<tr>";
-                                            echo "<td>" . $row['title'] . "</td>";
-                                            echo "<td>" . $row['author'] . "</td>";
-                                            echo "<td>" . $row['publisher'] . "</td>";
-                                            echo "<td>" . $row['isbn'] . "</td>";
-                                            echo "<td>" . $row['category'] . "</td>";
-                                            echo "</tr>";
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Total of Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count FROM tbl_books where strand_id = 9";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count'];
                                         }
-                                    } else {
-                                        echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
-                                    }
-                                }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Available Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 9 and status = 'Available'";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count1'];
+                                        }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fa fa-cogs fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Borrowed Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 9 and status = 'Borrowed'";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count1'];
+                                        }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fa fa-cogs fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                ';
+                                        echo '
+                                            <!-- Area Chart -->
+                                            <div class="col-xl col-lg-7">
+                                                <div class="card shadow mb-4">
+                                                    <!-- Card Header - Dropdown -->
+                                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                        <h6 class="m-0 font-weight-bold text-primary mr-5">RECENT BOOKS</h6>
+                                                        <div class="date-range-container mr-auto"></div>
+                                                    </div>';
+        
+                                        echo '
+                                                        <div class="card-body" style="height:660px;">
+                                                        <table id="booksTable" class="table table-striped" style="width:100%;">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Title</th>
+                                                                    <th>Author Type</th>
+                                                                    <th>Publisher</th>
+                                                                    <th>ISBN</th>
+                                                                    <th>Category</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>';
+                                        $query = "SELECT * FROM tbl_users WHERE strand_id = $strand_id";
+                                        $result = $conn->query($query);
+        
+                                        if ($result->num_rows == 1) {
+                                            // Fetch user data if available
+                                            $user_data = $result->fetch_assoc();
+        
+                                            // Fetch book data
+                                            $sql = "SELECT * FROM tbl_books WHERE strand_id = $strand_id";
+                                            $result = mysqli_query($conn, $sql);
+        
+                                            if (mysqli_num_rows($result) > 0) {
+                                                // Loop through each row and display data
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    echo "<tr>";
+                                                    echo "<td>" . htmlspecialchars($row['title']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['author']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['publisher']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['isbn']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['category']) . "</td>";
+                                                    echo "</tr>";
+                                                }
+                                            } else {
+                                                echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
+                                            }
+                                        }
 
                             } elseif ($role == 'authomotive') {
-                                echo '
-        <div class="row">
-            <!-- Area Chart -->
-            <div class="col-xl col-lg-7">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary mr-5">RECENT BOOKS</h6>
-                        <div class="date-range-container mr-auto"></div>
-                    </div>';
+                                echo '<div class="row">
 
-                                echo '
-                    <div class="card-body" style="height:660px;">
-                        <table id="booksTable" class="table table-striped" style="width:100%;">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Author Type</th>
-                                    <th>Publisher</th>
-                                    <th>ISBN</th>
-                                    <th>Category</th>
-                                </tr>
-                            </thead>
-                            <tbody>';
-
-                                $query = "SELECT * FROM tbl_users WHERE strand_id = $strand_id";
-                                $result = $conn->query($query);
-
-                                if ($result->num_rows == 1) {
-                                    // Fetch user data if available
-                                    $user_data = $result->fetch_assoc();
-
-                                    // Fetch book data
-                                    $sql = "SELECT * FROM tbl_books where strand_id = $strand_id";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    if (mysqli_num_rows($result) > 0) {
-                                        // Loop through each row and display data
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            echo "<tr>";
-                                            echo "<td>" . $row['title'] . "</td>";
-                                            echo "<td>" . $row['author'] . "</td>";
-                                            echo "<td>" . $row['publisher'] . "</td>";
-                                            echo "<td>" . $row['isbn'] . "</td>";
-                                            echo "<td>" . $row['category'] . "</td>";
-                                            echo "</tr>";
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Total of Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count FROM tbl_books where strand_id = 7";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count'];
+                                        }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Available Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 7 and status = 'Available'";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count1'];
+                                        }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fa fa-cogs fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Borrowed Books</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">';
+        
+                                        $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 7 and status = 'Borrowed'";
+                                        //  WHERE officeCreated =  $getOfficess
+                                        $result = mysqli_query($conn, $queryload);
+        
+                                        if ($result) {
+                                            $row = mysqli_fetch_assoc($result);
+                                            $count = $row['count1'];
+                                        }
+        
+                                        echo '' . $count . '';
+        
+                                        echo '</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fa fa-cogs fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                ';
+                                        echo '
+                                            <!-- Area Chart -->
+                                            <div class="col-xl col-lg-7">
+                                                <div class="card shadow mb-4">
+                                                    <!-- Card Header - Dropdown -->
+                                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                        <h6 class="m-0 font-weight-bold text-primary mr-5">RECENT BOOKS</h6>
+                                                        <div class="date-range-container mr-auto"></div>
+                                                    </div>';
+        
+                                        echo '
+                                                        <div class="card-body" style="height:660px;">
+                                                        <table id="booksTable" class="table table-striped" style="width:100%;">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Title</th>
+                                                                    <th>Author Type</th>
+                                                                    <th>Publisher</th>
+                                                                    <th>ISBN</th>
+                                                                    <th>Category</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>';
+                                        $query = "SELECT * FROM tbl_users WHERE strand_id = $strand_id";
+                                        $result = $conn->query($query);
+        
+                                        if ($result->num_rows == 1) {
+                                            // Fetch user data if available
+                                            $user_data = $result->fetch_assoc();
+        
+                                            // Fetch book data
+                                            $sql = "SELECT * FROM tbl_books WHERE strand_id = $strand_id";
+                                            $result = mysqli_query($conn, $sql);
+        
+                                            if (mysqli_num_rows($result) > 0) {
+                                                // Loop through each row and display data
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    echo "<tr>";
+                                                    echo "<td>" . htmlspecialchars($row['title']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['author']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['publisher']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['isbn']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['category']) . "</td>";
+                                                    echo "</tr>";
+                                                }
+                                            } else {
+                                                echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
+                                            }
                                         }
                                     } else {
                                         echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
                                     }
                                 }
                             }
-                        }
-                    }
+
 
 
 
