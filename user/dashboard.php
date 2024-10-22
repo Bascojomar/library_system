@@ -49,10 +49,10 @@ while ($row = $result->fetch_assoc()) {
             $.ajax({
                 url: php_file,
                 type: 'GET',
-                success: function (response) {
+                success: function(response) {
                     $(container).html(response);
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     console.error('AJAX request failed:', status, error);
                     $(container).html('<p>Error loading content. Please try again later.</p>');
                 }
@@ -61,7 +61,6 @@ while ($row = $result->fetch_assoc()) {
     </script>
 
 </head>
-
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -148,13 +147,11 @@ while ($row = $result->fetch_assoc()) {
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                    onclick="ajax_function('my_account','#maincontent');">
+                                <a class="dropdown-item" href="javascript:void(0);" onclick="ajax_function('my_account','#maincontent');">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                    onclick="ajax_function('pass','#maincontent');">
+                                <a class="dropdown-item" href="javascript:void(0);" onclick="ajax_function('pass','#maincontent');">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Password
                                 </a>
