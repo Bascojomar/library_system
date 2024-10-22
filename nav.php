@@ -86,7 +86,51 @@ if (isset($_SESSION['user_id'])) {
                 </a>
             </li>
  ';
-        } elseif ($role == 'user') {
+        } elseif ($role == 'stem') {
+            $query = "SELECT * FROM tbl_users";
+            $result = $conn->query($sql);
+
+            while ($row = $result->fetch_assoc()) {
+                $user = $row['username'];
+            }
+            echo '<a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">' . $user . '</div>
+            </a>';
+            echo '<hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="dashboard">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>';
+
+            echo ' <li class="nav-item">
+                <a class="nav-link collapsed" href="books">
+                    <span>Books</span>
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="../backend/logout.php">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>logout</span>
+                </a>
+            </li>
+';
+        }elseif ($role == 'abm') {
             $query = "SELECT * FROM tbl_users";
             $result = $conn->query($sql);
 

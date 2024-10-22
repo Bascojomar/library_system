@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
 		
-			$sql = "SELECT * FROM tbl_users WHERE BINARY username='$username' AND BINARY password='$password'";
+			$sql = "SELECT * FROM tbl_users WHERE username='$username' AND BINARY password='$password'";
 			$result = $conn->query($sql);
 		
 			if ($result->num_rows == 1) {
@@ -17,7 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				if ($_SESSION['role'] === 'admin') {
                     header("location:admin/dashboard");
 				}
-				elseif ($_SESSION['role'] === 'user') {
+				elseif ($_SESSION['role'] === 'abm') {
+                    header("location:user/dashboard");
+					
+				}elseif ($_SESSION['role'] === 'stem') {
                     header("location:user/dashboard");
 				}
             }else {

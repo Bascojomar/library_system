@@ -7,7 +7,7 @@ if (isset($_POST['admin-login'])) {
     $username = $_POST['username'];
 			$password = $_POST['password'];
 		
-			$sql = "SELECT * FROM tbl_users WHERE BINARY username='$username' AND BINARY password='$password'";
+			$sql = "SELECT * FROM tbl_users WHERE username='$username' AND BINARY password='$password'";
 			$result = $conn->query($sql);
 		
 			if ($result->num_rows == 1) {
@@ -27,7 +27,19 @@ if (isset($_POST['admin-login'])) {
 						showConfirmButton: false
 					}).then(function() { window.location = 'admin/dashboard'; });</script>";
 				}
-				elseif ($_SESSION['role'] === 'user') {
+				elseif ($_SESSION['role'] === 'stem') {
+					echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+					echo '<script>
+					        swal({
+					          title: "Login Successful",
+					          text: "Redirecting to User dashboard...",
+					          icon: "success"
+					        }).then(function() {
+					          window.location.href = "user/dashboard";
+					        });
+      					</script>';
+				}
+				elseif ($_SESSION['role'] === 'abm') {
 					echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
 					echo '<script>
 					        swal({
