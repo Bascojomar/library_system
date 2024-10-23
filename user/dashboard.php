@@ -252,7 +252,7 @@ while ($row = $result->fetch_assoc()) {
                                                 Borrowed Books</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">';
 
-                                $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 2 and status = 'Borrowed'";
+                                $queryload = "SELECT COUNT(*) as count1 FROM tbl_books where strand_id = 1 and status = 'Borrowed'";
                                 //  WHERE officeCreated =  $getOfficess
                                 $result = mysqli_query($conn, $queryload);
 
@@ -292,7 +292,7 @@ while ($row = $result->fetch_assoc()) {
                                                             <th>Title</th>
                                                             <th>Author Type</th>
                                                             <th>Publisher</th>
-                                                            <th>ISBN</th>
+                                                            <th>Year</th>
                                                             <th>Category</th>
                                                         </tr>
                                                     </thead>
@@ -315,7 +315,7 @@ while ($row = $result->fetch_assoc()) {
                                             echo "<td>" . htmlspecialchars($row['title']) . "</td>";
                                             echo "<td>" . htmlspecialchars($row['author']) . "</td>";
                                             echo "<td>" . htmlspecialchars($row['publisher']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['isbn']) . "</td>";
+                                            echo "<td>" . htmlspecialchars($row['year']) . "</td>";
                                             echo "<td>" . htmlspecialchars($row['category']) . "</td>";
                                             echo "</tr>";
                                         }
@@ -436,7 +436,7 @@ while ($row = $result->fetch_assoc()) {
                                                                     <th>Title</th>
                                                                     <th>Author Type</th>
                                                                     <th>Publisher</th>
-                                                                    <th>ISBN</th>
+                                                                    <th>Year</th>
                                                                     <th>Category</th>
                                                                 </tr>
                                                             </thead>
@@ -459,7 +459,7 @@ while ($row = $result->fetch_assoc()) {
                                                     echo "<td>" . htmlspecialchars($row['title']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['author']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['publisher']) . "</td>";
-                                                    echo "<td>" . htmlspecialchars($row['isbn']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['year']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['category']) . "</td>";
                                                     echo "</tr>";
                                                 }
@@ -579,7 +579,7 @@ while ($row = $result->fetch_assoc()) {
                                                                     <th>Title</th>
                                                                     <th>Author Type</th>
                                                                     <th>Publisher</th>
-                                                                    <th>ISBN</th>
+                                                                    <th>Year</th>
                                                                     <th>Category</th>
                                                                 </tr>
                                                             </thead>
@@ -602,7 +602,7 @@ while ($row = $result->fetch_assoc()) {
                                                     echo "<td>" . htmlspecialchars($row['title']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['author']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['publisher']) . "</td>";
-                                                    echo "<td>" . htmlspecialchars($row['isbn']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['year']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['category']) . "</td>";
                                                     echo "</tr>";
                                                 }
@@ -723,7 +723,7 @@ while ($row = $result->fetch_assoc()) {
                                                                     <th>Title</th>
                                                                     <th>Author Type</th>
                                                                     <th>Publisher</th>
-                                                                    <th>ISBN</th>
+                                                                    <th>Year</th>
                                                                     <th>Category</th>
                                                                 </tr>
                                                             </thead>
@@ -746,7 +746,7 @@ while ($row = $result->fetch_assoc()) {
                                                     echo "<td>" . htmlspecialchars($row['title']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['author']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['publisher']) . "</td>";
-                                                    echo "<td>" . htmlspecialchars($row['isbn']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['year']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['category']) . "</td>";
                                                     echo "</tr>";
                                                 }
@@ -867,7 +867,7 @@ while ($row = $result->fetch_assoc()) {
                                                                     <th>Title</th>
                                                                     <th>Author Type</th>
                                                                     <th>Publisher</th>
-                                                                    <th>ISBN</th>
+                                                                    <th>Year</th>
                                                                     <th>Category</th>
                                                                 </tr>
                                                             </thead>
@@ -890,7 +890,7 @@ while ($row = $result->fetch_assoc()) {
                                                     echo "<td>" . htmlspecialchars($row['title']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['author']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['publisher']) . "</td>";
-                                                    echo "<td>" . htmlspecialchars($row['isbn']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['year']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['category']) . "</td>";
                                                     echo "</tr>";
                                                 }
@@ -1011,7 +1011,7 @@ while ($row = $result->fetch_assoc()) {
                                                                     <th>Title</th>
                                                                     <th>Author Type</th>
                                                                     <th>Publisher</th>
-                                                                    <th>ISBN</th>
+                                                                    <th>Year</th>
                                                                     <th>Category</th>
                                                                 </tr>
                                                             </thead>
@@ -1034,7 +1034,7 @@ while ($row = $result->fetch_assoc()) {
                                                     echo "<td>" . htmlspecialchars($row['title']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['author']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['publisher']) . "</td>";
-                                                    echo "<td>" . htmlspecialchars($row['isbn']) . "</td>";
+                                                    echo "<td>" . htmlspecialchars($row['year']) . "</td>";
                                                     echo "<td>" . htmlspecialchars($row['category']) . "</td>";
                                                     echo "</tr>";
                                                 }
