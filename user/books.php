@@ -244,17 +244,18 @@ while ($row = $result->fetch_assoc()) {
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                                     <path d="M13.473 0.849c-0.195-0.195-0.512-0.195-0.707 0l-2.291 2.291-8.16 8.16c-0.419 0.419-0.586 1.049-0.462 1.628l1.393-1.393 8.16-8.16 2.291-2.291c0.195-0.195 0.195-0.512 0-0.707zM11.68 2.643l1.439-1.439c0.293-0.293 0.77-0.293 1.063 0l0.955 0.954c0.293 0.293 0.293 0.77 0 1.063l-1.439 1.439-1.064-1.063zM2.803 12.52l-0.954-0.954L11.68 2.643l0.954 0.954L2.803 12.52z"></path>
                                                     <path fill-rule="evenodd" d="M14.854 3.646l-2.5-2.5a1 1 0 0 0-1.415 0l-9.586 9.586a1 1 0 0 0-0.271 0.464l-0.669 2.676a1 1 0 0 0 1.282 1.283l2.676-0.669a1 1 0 0 0 0.464-0.271l9.586-9.586a1 1 0 0 0 0-1.415zM3.207 14.207l0.665-2.658 1.993 1.993-2.658 0.665zm9.586-9.586l-0.665 2.658-1.993-1.993 2.658-0.665z"></path>
-                                                </svg>
-                                            </button> <button class="btn"><a href="' . $row["file"] . '"><i class="fa-solid fa-eye"></i></a></button>';
+                                                </svg>';
                                            if($row['file'] == NULL){
                                             echo '';
                                            }else{
+                                            echo '
+                                            </button> <button class="btn"><a href="' . $row["file"] . '"><i class="fa-solid fa-eye"></i></a></button>';
+
                                             echo '<a href="' . $row["file"] . '" class="btn btn-success" download>
                                                         <i class="fa-solid fa-download"></i>
                                                     </a></td>';
                                            }
-                                            
-                                            echo "</tr>";
+                                        echo "</tr>";
                                         }
                                     } else {
                                         echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
@@ -326,17 +327,18 @@ while ($row = $result->fetch_assoc()) {
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                                     <path d="M13.473 0.849c-0.195-0.195-0.512-0.195-0.707 0l-2.291 2.291-8.16 8.16c-0.419 0.419-0.586 1.049-0.462 1.628l1.393-1.393 8.16-8.16 2.291-2.291c0.195-0.195 0.195-0.512 0-0.707zM11.68 2.643l1.439-1.439c0.293-0.293 0.77-0.293 1.063 0l0.955 0.954c0.293 0.293 0.293 0.77 0 1.063l-1.439 1.439-1.064-1.063zM2.803 12.52l-0.954-0.954L11.68 2.643l0.954 0.954L2.803 12.52z"></path>
                                                     <path fill-rule="evenodd" d="M14.854 3.646l-2.5-2.5a1 1 0 0 0-1.415 0l-9.586 9.586a1 1 0 0 0-0.271 0.464l-0.669 2.676a1 1 0 0 0 1.282 1.283l2.676-0.669a1 1 0 0 0 0.464-0.271l9.586-9.586a1 1 0 0 0 0-1.415zM3.207 14.207l0.665-2.658 1.993 1.993-2.658 0.665zm9.586-9.586l-0.665 2.658-1.993-1.993 2.658-0.665z"></path>
-                                                </svg>
-                                            </button> <button class="btn"><a href="' . $row["file"] . '"><i class="fa-solid fa-eye"></i></a></button>';
+                                                </svg>';
                                            if($row['file'] == NULL){
                                             echo '';
                                            }else{
+                                            echo '
+                                            </button> <button class="btn"><a href="' . $row["file"] . '"><i class="fa-solid fa-eye"></i></a></button>';
+
                                             echo '<a href="' . $row["file"] . '" class="btn btn-success" download>
                                                         <i class="fa-solid fa-download"></i>
                                                     </a></td>';
                                            }
                                         echo "</tr>";
-                                            echo "</tr>";
                                         }
                                     } else {
                                         echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
@@ -406,17 +408,18 @@ while ($row = $result->fetch_assoc()) {
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                                     <path d="M13.473 0.849c-0.195-0.195-0.512-0.195-0.707 0l-2.291 2.291-8.16 8.16c-0.419 0.419-0.586 1.049-0.462 1.628l1.393-1.393 8.16-8.16 2.291-2.291c0.195-0.195 0.195-0.512 0-0.707zM11.68 2.643l1.439-1.439c0.293-0.293 0.77-0.293 1.063 0l0.955 0.954c0.293 0.293 0.293 0.77 0 1.063l-1.439 1.439-1.064-1.063zM2.803 12.52l-0.954-0.954L11.68 2.643l0.954 0.954L2.803 12.52z"></path>
                                                     <path fill-rule="evenodd" d="M14.854 3.646l-2.5-2.5a1 1 0 0 0-1.415 0l-9.586 9.586a1 1 0 0 0-0.271 0.464l-0.669 2.676a1 1 0 0 0 1.282 1.283l2.676-0.669a1 1 0 0 0 0.464-0.271l9.586-9.586a1 1 0 0 0 0-1.415zM3.207 14.207l0.665-2.658 1.993 1.993-2.658 0.665zm9.586-9.586l-0.665 2.658-1.993-1.993 2.658-0.665z"></path>
-                                                </svg>
-                                            </button> <button class="btn"><a href="' . $row["file"] . '"><i class="fa-solid fa-eye"></i></a></button>';
+                                                </svg>';
                                            if($row['file'] == NULL){
                                             echo '';
                                            }else{
+                                            echo '
+                                            </button> <button class="btn"><a href="' . $row["file"] . '"><i class="fa-solid fa-eye"></i></a></button>';
+
                                             echo '<a href="' . $row["file"] . '" class="btn btn-success" download>
                                                         <i class="fa-solid fa-download"></i>
                                                     </a></td>';
                                            }
                                         echo "</tr>";
-                                            echo "</tr>";
                                         }
                                     } else {
                                         echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
@@ -486,17 +489,18 @@ while ($row = $result->fetch_assoc()) {
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                                     <path d="M13.473 0.849c-0.195-0.195-0.512-0.195-0.707 0l-2.291 2.291-8.16 8.16c-0.419 0.419-0.586 1.049-0.462 1.628l1.393-1.393 8.16-8.16 2.291-2.291c0.195-0.195 0.195-0.512 0-0.707zM11.68 2.643l1.439-1.439c0.293-0.293 0.77-0.293 1.063 0l0.955 0.954c0.293 0.293 0.293 0.77 0 1.063l-1.439 1.439-1.064-1.063zM2.803 12.52l-0.954-0.954L11.68 2.643l0.954 0.954L2.803 12.52z"></path>
                                                     <path fill-rule="evenodd" d="M14.854 3.646l-2.5-2.5a1 1 0 0 0-1.415 0l-9.586 9.586a1 1 0 0 0-0.271 0.464l-0.669 2.676a1 1 0 0 0 1.282 1.283l2.676-0.669a1 1 0 0 0 0.464-0.271l9.586-9.586a1 1 0 0 0 0-1.415zM3.207 14.207l0.665-2.658 1.993 1.993-2.658 0.665zm9.586-9.586l-0.665 2.658-1.993-1.993 2.658-0.665z"></path>
-                                                </svg>
-                                            </button> <button class="btn"><a href="' . $row["file"] . '"><i class="fa-solid fa-eye"></i></a></button>';
+                                                </svg>';
                                            if($row['file'] == NULL){
                                             echo '';
                                            }else{
+                                            echo '
+                                            </button> <button class="btn"><a href="' . $row["file"] . '"><i class="fa-solid fa-eye"></i></a></button>';
+
                                             echo '<a href="' . $row["file"] . '" class="btn btn-success" download>
                                                         <i class="fa-solid fa-download"></i>
                                                     </a></td>';
                                            }
                                         echo "</tr>";
-                                            echo "</tr>";
                                         }
                                     } else {
                                         echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
@@ -566,17 +570,18 @@ while ($row = $result->fetch_assoc()) {
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                                     <path d="M13.473 0.849c-0.195-0.195-0.512-0.195-0.707 0l-2.291 2.291-8.16 8.16c-0.419 0.419-0.586 1.049-0.462 1.628l1.393-1.393 8.16-8.16 2.291-2.291c0.195-0.195 0.195-0.512 0-0.707zM11.68 2.643l1.439-1.439c0.293-0.293 0.77-0.293 1.063 0l0.955 0.954c0.293 0.293 0.293 0.77 0 1.063l-1.439 1.439-1.064-1.063zM2.803 12.52l-0.954-0.954L11.68 2.643l0.954 0.954L2.803 12.52z"></path>
                                                     <path fill-rule="evenodd" d="M14.854 3.646l-2.5-2.5a1 1 0 0 0-1.415 0l-9.586 9.586a1 1 0 0 0-0.271 0.464l-0.669 2.676a1 1 0 0 0 1.282 1.283l2.676-0.669a1 1 0 0 0 0.464-0.271l9.586-9.586a1 1 0 0 0 0-1.415zM3.207 14.207l0.665-2.658 1.993 1.993-2.658 0.665zm9.586-9.586l-0.665 2.658-1.993-1.993 2.658-0.665z"></path>
-                                                </svg>
-                                            </button> <button class="btn"><a href="' . $row["file"] . '"><i class="fa-solid fa-eye"></i></a></button>';
+                                                </svg>';
                                            if($row['file'] == NULL){
                                             echo '';
                                            }else{
+                                            echo '
+                                            </button> <button class="btn"><a href="' . $row["file"] . '"><i class="fa-solid fa-eye"></i></a></button>';
+
                                             echo '<a href="' . $row["file"] . '" class="btn btn-success" download>
                                                         <i class="fa-solid fa-download"></i>
                                                     </a></td>';
                                            }
                                         echo "</tr>";
-                                            echo "</tr>";
                                         }
                                     } else {
                                         echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
@@ -646,17 +651,18 @@ while ($row = $result->fetch_assoc()) {
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                                     <path d="M13.473 0.849c-0.195-0.195-0.512-0.195-0.707 0l-2.291 2.291-8.16 8.16c-0.419 0.419-0.586 1.049-0.462 1.628l1.393-1.393 8.16-8.16 2.291-2.291c0.195-0.195 0.195-0.512 0-0.707zM11.68 2.643l1.439-1.439c0.293-0.293 0.77-0.293 1.063 0l0.955 0.954c0.293 0.293 0.293 0.77 0 1.063l-1.439 1.439-1.064-1.063zM2.803 12.52l-0.954-0.954L11.68 2.643l0.954 0.954L2.803 12.52z"></path>
                                                     <path fill-rule="evenodd" d="M14.854 3.646l-2.5-2.5a1 1 0 0 0-1.415 0l-9.586 9.586a1 1 0 0 0-0.271 0.464l-0.669 2.676a1 1 0 0 0 1.282 1.283l2.676-0.669a1 1 0 0 0 0.464-0.271l9.586-9.586a1 1 0 0 0 0-1.415zM3.207 14.207l0.665-2.658 1.993 1.993-2.658 0.665zm9.586-9.586l-0.665 2.658-1.993-1.993 2.658-0.665z"></path>
-                                                </svg>
-                                            </button> <button class="btn"><a href="' . $row["file"] . '"><i class="fa-solid fa-eye"></i></a></button>';
+                                                </svg>';
                                            if($row['file'] == NULL){
                                             echo '';
                                            }else{
+                                            echo '
+                                            </button> <button class="btn"><a href="' . $row["file"] . '"><i class="fa-solid fa-eye"></i></a></button>';
+
                                             echo '<a href="' . $row["file"] . '" class="btn btn-success" download>
                                                         <i class="fa-solid fa-download"></i>
                                                     </a></td>';
                                            }
                                         echo "</tr>";
-                                            echo "</tr>";
                                         }
                                     } else {
                                         echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
