@@ -422,7 +422,7 @@ while ($row = $result->fetch_assoc()) {
                                                     <th>Title</th>
                                                     <th>Author Type</th>
                                                     <th>Publisher</th>
-                                                    <th>ISBN</th>
+                                                    <th>Year</th>
                                                     <th>Category</th>
                                                 </tr>
                                             </thead>
@@ -449,7 +449,7 @@ while ($row = $result->fetch_assoc()) {
                                     echo "<td>" . $row['title'] . "</td>";
                                     echo "<td>" . $row['author'] . "</td>";
                                     echo "<td>" . $row['publisher'] . "</td>";
-                                    echo "<td>" . $row['isbn'] . "</td>";
+                                    echo "<td>" . $row['year'] . "</td>";
                                     echo "<td>" . $row['category'] . "</td>";
                                     echo "</tr>";
                                 }

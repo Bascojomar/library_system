@@ -33,6 +33,7 @@ while ($row = $result->fetch_assoc()) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -195,6 +196,7 @@ while ($row = $result->fetch_assoc()) {
                                     <th>Email</th>
                                     <th>Role</th>
                                     <th>Strand</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -214,6 +216,14 @@ while ($row = $result->fetch_assoc()) {
                                         echo '<td>' . htmlspecialchars($row['email']) . '</td>';
                                         echo '<td>' . htmlspecialchars($row['role']) . '</td>';
                                         echo '<td>' . htmlspecialchars(strandName($row['strand_id'])) . '</td>';
+                                        echo '<td>';
+
+                                        echo "<form action='' method='post'>";
+                                        echo "<input type='hidden' name='id' value='" . $row['user_id'] . "'>";
+                                        echo "<button type='submit' name='send_pass' value='Send' class='btn btn-primary btn-sm m-1'>";
+                                        echo '<i class="fa-regular fa-paper-plane"></i></button>';
+                                        echo "</form>";
+                                         
                                         echo '</tr>';
                                     }
                                 } else {
@@ -224,11 +234,16 @@ while ($row = $result->fetch_assoc()) {
                                 // Free the result and close the connection
                                 mysqli_free_result($result);
                                 mysqli_close($conn);
+
+                               
+                   include '../email/send.php';
+                   
                                 ?>
                             </tbody>
                         </table>
                     </div>
 
+                   
 
                     <!-- Content Column -->
 
@@ -254,6 +269,7 @@ while ($row = $result->fetch_assoc()) {
                     <!-- DataTables JS -->
                     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
                     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+                    
 
                     <script>
                         $(document).ready(function() {
